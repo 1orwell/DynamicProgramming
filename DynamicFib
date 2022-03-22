@@ -9,8 +9,10 @@ def fib(n):
     if n == 1: # base case 2
         return 1
     elif n in calculated: # this is the dynamic step - store and reuse previous steps
+         # I believe this is called memoization?
         return calculated[n]
     else: # recursive step
+        # top down approach used
         calculated[n] = fib(n-1) + fib(n-2)
     return calculated[n]
 
