@@ -20,5 +20,5 @@ def canSum(targetSum, numbers, memo):
     return False
 
 
-boolean = canSum(100, [12, 10, 6, 5, 3, 4, 7], {})
+boolean = canSum(300, [12, 10, 6, 5, 3, 4, 7], {})
 print(boolean)
