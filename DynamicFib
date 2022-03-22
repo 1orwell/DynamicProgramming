@@ -1,0 +1,31 @@
+#import time
+#import matplotlib.pyplot as plt
+
+calculated = {}
+
+def fib(n):
+    if n == 0: # base case 1
+        return 0
+    if n == 1: # base case 2
+        return 1
+    elif n in calculated: # this is the dynamic step - store and reuse previous steps
+        return calculated[n]
+    else: # recursive step
+        calculated[n] = fib(n-1) + fib(n-2)
+    return calculated[n]
+
+numbers = 4
+fib_result = fib(numbers)
+
+#this shows that each key's value is the fib value for that term
+for k, v in calculated.items():
+    print(k, v)
+"""
+print("calculated[20] = " + str(calculated[20]))
+print("calculated[15] = " + str(calculated[15]))
+print("calculated[10] = " + str(calculated[10]))
+print("calculated[5] = " + str(calculated[5]))
+print("calculated[3] = " + str(calculated[3]))
+"""
+
+print(fib_result)
