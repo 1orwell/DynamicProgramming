@@ -1,4 +1,7 @@
 # This should return a path that sums to the targetNum
+import re
+
+
 def canSum(targetSum, numbers, memo, path):
     if targetSum == 0: # base case - exact amount reached, therefore return empty list
         return []
@@ -17,8 +20,8 @@ def canSum(targetSum, numbers, memo, path):
     
     #If we don't return True, we need to return False
     memo[targetSum] = None
-    return False
+    return memo[targetSum]
 
 
-path = canSum(300, [12, 10, 6, 5, 3, 4, 7], {}, [])
+path = canSum(300, [7, 14], {}, [])
 print(path)
