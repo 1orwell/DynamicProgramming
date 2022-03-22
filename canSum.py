@@ -3,7 +3,6 @@ def canSum(targetSum, numbers, memo):
     if targetSum == 0: # base case - exact amount reached, therefore possible
         return True
     if targetSum < 0: # base case - subtracted too much so that combo doesn't work
-        memo[targetSum] = False
         return False
     
     if targetSum in memo: # 'base case' for memoization
@@ -17,8 +16,9 @@ def canSum(targetSum, numbers, memo):
             return True
     
     #If we don't return True, we need to return False
+    memo[targetSum] = False
     return False
 
 
-boolean = canSum(1, [5, 3, 4, 7], {})
+boolean = canSum(100, [12, 10, 6, 5, 3, 4, 7], {})
 print(boolean)
