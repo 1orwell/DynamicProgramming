@@ -15,7 +15,10 @@ def canSum(targetSum, numbers, memo):
         if canSum(remainder, numbers, memo) == True:
             memo[remainder] = True
             return True
+    
+    #If we don't return True, we need to return False
+    return False
 
 
-boolean = canSum(100, [5, 3, 4, 7], {})
+boolean = canSum(1, [5, 3, 4, 7], {})
 print(boolean)
