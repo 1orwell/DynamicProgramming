@@ -1,27 +1,11 @@
-#work in progress
-#returning False when should return True
-
-def canConstruct(target, wordBank):
+def canConstruct(target, wordBank, memo = {}):
 
     # if we have reached a successful base case, return True
     if target == "":
-        possible = True
-        return possible
+        return True
 
-    """
-    first_letter_check = False
-
-    #check the first letter of each word in the word bank
-    #if none of these match the first letter of the target
-    #return False
-    for word in wordBank:
-        first_letter = word[0]
-        if first_letter == target[0]:
-            first_letter_check = True
-    if first_letter_check == False:
-        possible = False
-        return possible
-    """
+    if target in memo:
+        return memo[target]
 
     for word in wordBank:
         match = True
@@ -41,16 +25,21 @@ def canConstruct(target, wordBank):
         if match == True:
             #remove word from beginning of target
             new_target = target[word_len:]
-            if canConstruct(new_target, wordBank) == True:
+            if canConstruct(new_target, wordBank, memo) == True:
+                memo[target] = True
                 return True
 
+    memo[target] = False
     return False
         
-    
-        
-    
 result = canConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"])
 print(result)
 
 result = canConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"])
+print(result)
+
+result = canConstruct("eeeeeeeeeeeeeeeelllllll", ["e", "ee", "eeeee", "l"])
+print(result)
+
+result = canConstruct("eeeeeeeeeeeeeeeelllllllw", ["e", "ee", "eeeee", "l"])
 print(result)
