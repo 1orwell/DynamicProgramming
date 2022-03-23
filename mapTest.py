@@ -12,3 +12,8 @@ for val in new_list:
 for val in simple_new_list:
     print(val)
 
+my_list = [1,3,4,5,6]
+
+my_list.insert(0, 10)
+print(my_list)
+
