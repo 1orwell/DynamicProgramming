@@ -51,3 +51,6 @@ def canConstruct(target, wordBank):
     
 result = canConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"])
 print(result)
+
+result = canConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"])
+print(result)
