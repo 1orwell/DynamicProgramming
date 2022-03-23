@@ -12,6 +12,7 @@ def bestSum(targetSum, numbers, memo):
 
     for num in numbers:
         remainder = targetSum - num
+        # possible_path ends up containing all possible paths, no it's not resetting - why is this?
         possible_path = bestSum(remainder, numbers, memo)
         #returned a list so summation possible
         if type(possible_path) == list:
@@ -24,3 +25,4 @@ def bestSum(targetSum, numbers, memo):
     return shortest_path
 
 print(bestSum(8, [2, 4, 5], {}))
+print(bestSum(100, [2, 4, 25], {}))
