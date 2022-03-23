@@ -1,13 +1,14 @@
 #work in progress
 #returning False when should return True
 
-def canConstruct(target, wordBank, possible):
+def canConstruct(target, wordBank):
 
     # if we have reached a successful base case, return True
     if target == "":
         possible = True
         return possible
 
+    """
     first_letter_check = False
 
     #check the first letter of each word in the word bank
@@ -20,6 +21,7 @@ def canConstruct(target, wordBank, possible):
     if first_letter_check == False:
         possible = False
         return possible
+    """
 
     for word in wordBank:
         match = True
@@ -38,21 +40,14 @@ def canConstruct(target, wordBank, possible):
         # if match never gets set to False, that means word is a subset of target
         if match == True:
             #remove word from beginning of target
-            possible = True
-            target = target[word_len:]
-            possible = canConstruct(target, wordBank, possible)
-        
-        if possible == False:
-            return possible
-    
-    return possible
+            new_target = target[word_len:]
+            if canConstruct(new_target, wordBank) == True:
+                return True
+
+    return False
         
     
-
+        
     
-
-
-
-
-result = canConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"], False)
+result = canConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"])
 print(result)
