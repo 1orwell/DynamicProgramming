@@ -1,9 +1,12 @@
 #why are some lists returned twice?
 result = []
 
-def allConstruct(target, wordBank):
+def allConstruct(target, wordBank, memo = {}):
     if target == "":
         return([[]])
+
+    if target in memo:
+        return memo[target]
 
     for word in wordBank:
         match = True
@@ -24,20 +27,23 @@ def allConstruct(target, wordBank):
             #remove word from beginning of target
             new_target = target[word_len:]
             suffix_ways = allConstruct(new_target, wordBank)
-            #target_ways = map(lambda x: x.insert(0, word), suffix_ways)
-            # the above line didn't work as insert does not return a value
+            print("suffix ways type is: " + str(type(suffix_ways)))
             for way in suffix_ways:
                 way.insert(0, word) 
             print("target ways are: ")
             for way in suffix_ways:
                 print(way)
-            # "spread out" the suffix_ways so we keep a 2D array
-            result.append(*suffix_ways)
+            # error: append takes one arguemnt, three given
+            # becoming three seperate lists?
+            # but appending a list creates a 2d list
+            result.append(suffix_ways)
+            memo[target] = result
 
+    memo[target] = result
     return result
 
-
-#result = allConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"])
-#print(result)
 result = allConstruct("abc", ["ab", "c", "cd", "abc"])
+print(result)
+
+result = allConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"])
 print(result)
