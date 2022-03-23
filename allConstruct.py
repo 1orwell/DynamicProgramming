@@ -1,7 +1,4 @@
-def add_prefix(ways, word):
-    ways.insert(0, word)
-    return ways
-
+#why are some lists returned twice?
 result = []
 
 def allConstruct(target, wordBank):
@@ -35,7 +32,7 @@ def allConstruct(target, wordBank):
             for way in suffix_ways:
                 print(way)
             # "spread out" the suffix_ways so we keep a 2D array
-            result.append(suffix_ways)
+            result.append(*suffix_ways)
 
     return result
 
