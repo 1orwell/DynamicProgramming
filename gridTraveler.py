@@ -1,5 +1,3 @@
-from threading import get_ident
-
 #oh my gosh, it worked
 def gridTraveler(m,n,memo):
     if m == 1 and n == 1:
@@ -16,4 +14,10 @@ def gridTraveler(m,n,memo):
     return memo[m,n]
 
 options = gridTraveler(6,6,{})
+print(options)
+
+options = gridTraveler(60,100,{})
+print(options)
+
+options = gridTraveler(1,1,{})
 print(options)
